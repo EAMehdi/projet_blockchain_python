@@ -13,6 +13,22 @@ Mehdi EL AYADI, Yufei Liu, Qilian Gu
 ### Contexte
 Le composant HMACSHA512 est un module de cryptographie qui fournit une fonction de hachage cryptographique pour la sécurité des données. Il est basé sur l'algorithme HMAC (Hash-based Message Authentication Code) et utilise SHA512 comme fonction de hachage sous-jacente.
 
+### En détails : 
+
+HMACSHA512 est un algorithme de hachage utilisé pour l'authentification de messages. Il est basé sur l'algorithme cryptographique SHA-512. HMAC signifie "Hash-based Message Authentication Code". C'est une construction spécifique utilisée pour créer une fonction de hachage de message, qui peut être utilisée pour vérifier à la fois l'intégrité des données et l'authenticité.
+
+L'algorithme HMACSHA512 combine une **clé secrète** avec le message à hacher pour produire un code d'authentification de message (*MAC - Message authentication code*). Ce MAC peut ensuite être utilisé pour vérifier que le message n'a pas été altéré pendant le transport et que le message provient bien de l'expéditeur prévu.
+
+Les cas d'utilisation typiques de HMACSHA512 comprennent :
+
+- **Authentification de messages** : HMACSHA512 peut être utilisé pour garantir que les messages envoyés sur un réseau n'ont pas été falsifiés. Le destinataire du message peut utiliser le MAC pour vérifier l'intégrité du message.
+
+- **Signature de tokens** : Dans les systèmes d'authentification basés sur des tokens, comme JWT (JSON Web Tokens), HMACSHA512 peut être utilisé pour signer le token. Cela garantit que le token n'a pas été modifié après sa création.
+
+- **Protection des données sensibles** : HMACSHA512 peut être utilisé pour vérifier l'intégrité des données sensibles, comme les mots de passe. En stockant le MAC d'un mot de passe plutôt que le mot de passe lui-même, vous pouvez vérifier un mot de passe sans risquer de le divulguer.
+
+Ce document décrit la spécification d'un composant basé sur l'algorithme HMACSHA512. Ce composant est destiné à être utilisé dans des applications nécessitant une authentification de messages codés en C++ et Python.
+
 ### Schéma bloc incluant les composants connexes
 ```
 [Application] --> [HMACSHA512 Composant] --> [SHA512]
