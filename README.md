@@ -7,6 +7,7 @@ Mehdi EL AYADI, Romain DIOP, Qilian GU
 | Version | Date       | Description                 |
 |---------|------------|-----------------------------|
 | 1.0     | 26/05/2023 | Première version du document|
+| 1.5     | 04/06/2023 | Changement de binome & Update de la fonction|
 
 ## Description
 
