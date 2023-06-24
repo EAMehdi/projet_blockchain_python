@@ -104,7 +104,26 @@ cd crypt_component
 ```
 
 
-3. 
+3. Executer le test :
+```bash
+make
+```
+
+Voici le résultat :
+```
+idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
+echo "execution du test"
+execution du test
+pytest test.py
+================================================== test session starts ==================================================
+platform linux -- Python 3.9.2, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/idhem_aya/projet_blockchain_python/crypt_component
+collected 4 items                                                                                                       
+
+test.py ....                                                                                                      [100%]
+
+=================================================== 4 passed in 0.02s ===================================================
+```
 
 ## Exemple d'éxecution pour un test primitif : 
 Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
