@@ -6,6 +6,9 @@ namespace py = pybind11;
 
 // HMAC-SHA512 function
 std::string hmac_sha512(const std::string& key, const std::string& data) {
+    if (key.empty()) {
+        throw std::invalid_argument("Key cannot be empty");
+    }
     // create a buffer to hold the result
     unsigned char* digest = HMAC(EVP_sha512(), key.c_str(), key.size(),
                                  reinterpret_cast<const unsigned char*>(data.c_str()), data.size(), NULL, NULL); 
