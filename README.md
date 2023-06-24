@@ -31,13 +31,7 @@ Les cas d'utilisation typiques de HMACSHA512 comprennent :
 
 Ce document décrit la spécification d'un composant basé sur l'algorithme HMACSHA512. Ce composant est destiné à être utilisé dans des applications nécessitant une authentification de messages codés en C++ et Python.
 
-### Schéma bloc incluant les composants connexes
-```
-[Application] --> [HMACSHA512 Composant] --> [SHA512]
-```
-L'application interagit avec le composant HMACSHA512, qui à son tour utilise le composant SHA512.
-
-### Interface et interaction avec chaque autre composant
+### Interface et interaction avec d'autre composant
 L'interface du composant HMACSHA512 est conçue pour être simple et directe. Elle fournit une fonction `hmac_sha512(key, message)` qui prend une clé et un message en entrée, et renvoie le hachage HMACSHA512 du message.
 
 ### Résumé: déclarations de fonctions python d’interface et leurs arguments
@@ -64,6 +58,8 @@ Nous testerons la fonction `hmac_sha512` avec différentes clés et messages, y 
 
 ### Programme de test
 ```python
+import pytest
+import crypt_message as crypt
 def test_hmac_sha512():
     # Test with valid values
     key = "secret"
