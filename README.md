@@ -41,6 +41,7 @@ L'application interagit avec le composant HMACSHA512, qui à son tour utilise le
 L'interface du composant HMACSHA512 est conçue pour être simple et directe. Elle fournit une fonction `hmac_sha512(key, message)` qui prend une clé et un message en entrée, et renvoie le hachage HMACSHA512 du message.
 
 ### Résumé: déclarations de fonctions python d’interface et leurs arguments
+```python
 def hmac_sha512(key: str, message: str) -> str:
     """
     Calcule le HMACSHA512 du message avec la clé donnée.
@@ -52,7 +53,7 @@ def hmac_sha512(key: str, message: str) -> str:
     Returns:
         str: Le hachage HMACSHA512 du message, représenté comme une chaîne de caractères hexadécimales.
     """
-
+```
 ### Cas d’erreurs
 Si la clé ou le message ne sont pas de type `str`, une `TypeError` sera levée. Si la clé est vide, une `ValueError` sera levée.
 
@@ -62,10 +63,7 @@ Si la clé ou le message ne sont pas de type `str`, une `TypeError` sera levée.
 Nous testerons la fonction `hmac_sha512` avec différentes clés et messages, y compris des cas limites comme une clé vide ou un message vide. Nous vérifierons que la fonction renvoie le bon hachage et qu'elle lève les exceptions appropriées en cas d'erreur.
 
 ### Programme de test
-```
-import pytest
-import crypt_message as crypt
-
+```python
 def test_hmac_sha512():
     # Test with valid values
     key = "secret"
@@ -91,26 +89,26 @@ Pour exécuter les tests, utilisez simplement la commande `python -m pytest test
 
 Pour cela il faut suivre les instructions suivantes : 
 1. Installation de OpenSSL et Pytest
-```bash
+```console
 sudo apt-get install libssl-dev
 pip install pytest
 ```
 
 2. Cloner le projet et accéder au dossier 
-```
+```console
 git clone https://github.com/EAMehdi/projet_blockchain_python
-cd projet_blockchain_python
-cd crypt_component
+cd projet_blockchain_python/
+cd crypt_component/
 ```
 
 
 3. Executer le test :
-```bash
+```console
 make
 ```
 
 Voici le résultat :
-```
+```console
 idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
 echo "execution du test"
 execution du test
@@ -130,7 +128,7 @@ Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
 
 ![image](https://github.com/EAMehdi/projet_blockchain_python/assets/45198822/8ffb0777-21d1-4b87-8a74-1d5a66731346)
 
-```bash
+```console
 idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
 g++ -fPIC `python3-config --includes` -I ../pybind11/include -I ../json/include -I ../pybind11_json/include -c crypt_message.cpp -o crypt_message.o
 g++ -o crypt_message.so -shared  crypt_message.o `python3-config --ldflags` -lssl -lcrypto
