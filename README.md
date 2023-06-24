@@ -8,6 +8,7 @@ Mehdi EL AYADI, Romain DIOP, Qilian GU
 |---------|------------|-----------------------------|
 | 1.0     | 26/05/2023 | Première version du document|
 | 1.5     | 04/06/2023 | Changement de binome & Update de la fonction|
+| 2.0     | 23/05/2023 | Update Test & Ajout Installation et Exemples|
 
 ## Description
 
@@ -61,35 +62,82 @@ Si la clé ou le message ne sont pas de type `str`, une `TypeError` sera levée.
 Nous testerons la fonction `hmac_sha512` avec différentes clés et messages, y compris des cas limites comme une clé vide ou un message vide. Nous vérifierons que la fonction renvoie le bon hachage et qu'elle lève les exceptions appropriées en cas d'erreur.
 
 ### Programme de test
-```python
+```
+import pytest
+import crypt_message as crypt
+
 def test_hmac_sha512():
-    # Test avec des valeurs valides
+    # Test with valid values
     key = "secret"
     message = "Hello, World!"
-    assert hmac_sha512(key, message) == '9b61...'
+    assert crypt.hmac_sha512(key, message) == '9b61...'  # you need to replace '9b61...' with the correct expected hash
 
-    # Test avec une clé vide
-    try:
-        hmac_sha512('', message)
-    except ValueError:
-        pass
-    else:
-        assert False, "Expected ValueError for empty key"
+    # Test with an empty key
+    with pytest.raises(ValueError):
+        crypt.hmac_sha512('', message)
 
-    # Test avec un type de clé invalide
-    try:
-        hmac_sha512(123, message)
-    except TypeError:
-        pass
-    else:
-        assert False, "Expected TypeError for key of wrong type"
+    # Test with a key of the wrong type
+    with pytest.raises(TypeError):
+        crypt.hmac_sha512(123, message)
 
-    # Test avec un type de message invalide
-    try:
-        hmac_sha512(key, 123)
-    except TypeError:
-        pass
-    else:
-        assert False, "Expected TypeError for message of wrong type"
+    # Test with a message of the wrong type
+    with pytest.raises(TypeError):
+        crypt.hmac_sha512(key, 123)
 ```
 Pour exécuter les tests, utilisez simplement la commande `python -m pytest test_hmac_sha512`.
+
+
+## Execution du test 
+
+Pour cela il faut suivre les instructions suivantes : 
+1. Installation de OpenSSL et Pytest
+```bash
+sudo apt-get install libssl-dev
+pip install pytest
+```
+
+2. Cloner le projet et accéder au dossier 
+```
+git clone https://github.com/EAMehdi/projet_blockchain_python
+cd projet_blockchain_python
+cd crypt_component
+```
+
+
+3. Executer le test :
+```bash
+make
+```
+
+Voici le résultat :
+```
+idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
+echo "execution du test"
+execution du test
+pytest test.py
+================================================== test session starts ==================================================
+platform linux -- Python 3.9.2, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/idhem_aya/projet_blockchain_python/crypt_component
+collected 4 items                                                                                                       
+
+test.py ....                                                                                                      [100%]
+
+=================================================== 4 passed in 0.02s ===================================================
+```
+
+## Exemple d'éxecution pour un test primitif : 
+Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
+
+![image](https://github.com/EAMehdi/projet_blockchain_python/assets/45198822/8ffb0777-21d1-4b87-8a74-1d5a66731346)
+
+```bash
+idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
+g++ -fPIC `python3-config --includes` -I ../pybind11/include -I ../json/include -I ../pybind11_json/include -c crypt_message.cpp -o crypt_message.o
+g++ -o crypt_message.so -shared  crypt_message.o `python3-config --ldflags` -lssl -lcrypto
+echo "execution du test"
+execution du test
+python3 test.py
+Le message original est : Hello, World!
+La clé est : secret
+Message chiffré : 851caed63934ad1c9a03aef23ba2b84f224bdff4f5148efc57d95f9ae80ca9db2e98bc4c709a529eb1b7234a1ac2e381d28e0eb1efa090bb19613f5c124b6d5b
+```
