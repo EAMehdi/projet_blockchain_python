@@ -106,7 +106,7 @@ cd crypt_component
 
 3. 
 
-## Exemple d'éxecution lors d'un pré-test : 
+## Exemple d'éxecution pour un test primitif : 
 Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
 
 ![image](https://github.com/EAMehdi/projet_blockchain_python/assets/45198822/8ffb0777-21d1-4b87-8a74-1d5a66731346)
