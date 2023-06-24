@@ -87,11 +87,13 @@ def test_hmac_sha512():
 Pour exécuter les tests, utilisez simplement la commande `python -m pytest test_hmac_sha512`.
 
 
-## Execution du test : 
+## Execution du test 
 
-1. Installation de OpenSSL
+Pour cela il faut suivre les instructions suivantes : 
+1. Installation de OpenSSL et Pytest
 ```bash
 sudo apt-get install libssl-dev
+pip install pytest
 ```
 
 2. Cloner le projet et accéder au dossier 
@@ -102,7 +104,7 @@ cd crypt_component
 ```
 
 
-2. 
+3. 
 
 ## Exemple d'éxecution lors d'un pré-test : 
 Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
