@@ -24,6 +24,8 @@ L'algorithme HMACSHA512 combine une **clé secrète** avec le message à hacher 
 
 Une spécificité de cet algorithme réside dans son caractère secret, s'opposant ainsi aux méthodes d'authentification qui reposent sur le système de clés publique et privée. Dans ce cas, la clé HMACSHA512 doit être partagée de manière sécurisée entre l'expéditeur et le destinataire pour garantir un processus d'authentification efficace.
 
+Une modification majeure a été effectuée pour vérifier que la clé fournie est une chaîne hexadécimale de taille fixe 256 bits. De plus, elle doit commencer par "0x" pour indiquer que c'est une chaîne hexadécimale.
+
 Les cas d'utilisation typiques de HMACSHA512 comprennent :
 
 - **Authentification de messages** : HMACSHA512 peut être utilisé pour garantir que les messages envoyés sur un réseau n'ont pas été falsifiés. Le destinataire du message peut utiliser le MAC pour vérifier l'intégrité du message.
@@ -44,7 +46,7 @@ def hmac_sha512(key: str, message: str) -> str:
     Calcule le HMACSHA512 du message avec la clé donnée.
 
     Args:
-        key (str): La clé utilisée pour le hachage.
+        key (str): La clé utilisée pour le hachage. Doit être une chaîne hexadécimale de taille fixe 256 bits commençant par '0x'.
         message (str): Le message à hacher.
 
     Returns:
@@ -52,7 +54,7 @@ def hmac_sha512(key: str, message: str) -> str:
     """
 ```
 ### Cas d’erreurs
-Si la clé ou le message ne sont pas de type `str`, une `TypeError` sera levée. Si la clé est vide, une `ValueError` sera levée.
+Si la clé ou le message ne sont pas de type str, une TypeError sera levée. Si la clé est vide ou ne respecte pas le format hexadécimal requis (256 bits et commençant par '0x'), une ValueError sera levée.
 
 ## Test
 
@@ -126,9 +128,9 @@ test.py ....                                                                    
 ```
 
 ## Exemple d'éxecution pour un test primitif : 
-Comparaison en ligne : https://www.devglan.com/online-tools/hmac-sha256-online
+Comparaison en ligne : https://www.liavaag.org/English/SHA-Generator/HMAC/
 
-![image](https://github.com/EAMehdi/projet_blockchain_python/assets/45198822/8ffb0777-21d1-4b87-8a74-1d5a66731346)
+![image](https://github.com/EAMehdi/projet_blockchain_python/assets/45198822/3199cd31-cc42-4c81-8936-3e5a7fa79635)
 
 ```console
 idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ make
@@ -137,7 +139,9 @@ g++ -o crypt_message.so -shared  crypt_message.o `python3-config --ldflags` -lss
 echo "execution du test"
 execution du test
 python3 test.py
-Le message original est : Hello, World!
-La clé est : secret
-Message chiffré : 851caed63934ad1c9a03aef23ba2b84f224bdff4f5148efc57d95f9ae80ca9db2e98bc4c709a529eb1b7234a1ac2e381d28e0eb1efa090bb19613f5c124b6d5b
+idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ python3 mini_test.py 
+Le message original est  Hello, World!
+La clé est :  0x7f86a9f4865b4c9d7f86a9f4865b4c9d7f86a9f4865b4c9d7f86a9f4865b4c9d
+Le message chiffré est :
+ 51d746531a26bd58baf64c02e73df5bb4586aca6d61a73f26008319ee33c42b9e7c8b000494fc2c33b101a60623710db11f11ef35976b064f3b00ce39ff0c1fc
 ```
