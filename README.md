@@ -139,7 +139,6 @@ g++ -o crypt_message.so -shared  crypt_message.o `python3-config --ldflags` -lss
 echo "execution du test"
 execution du test
 python3 test.py
-idhem_aya@instance-1:~/projet_blockchain_python/crypt_component$ python3 mini_test.py 
 Le message original est  Hello, World!
 La clé est :  0x7f86a9f4865b4c9d7f86a9f4865b4c9d7f86a9f4865b4c9d7f86a9f4865b4c9d
 Le message chiffré est :
