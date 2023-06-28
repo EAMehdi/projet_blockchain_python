@@ -9,6 +9,7 @@ Mehdi EL AYADI, Romain DIOP, Qilian GU
 | 1.0     | 26/05/2023 | Première version du document|
 | 1.5     | 04/06/2023 | Changement de binome & Update de la fonction|
 | 2.0     | 23/05/2023 | Update Test & Ajout Installation et Exemples|
+| 2.5     | 28/05/2023 | Update (key hexadecimal de taille fixe) |
 
 ## Description
 
