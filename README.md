@@ -13,13 +13,15 @@ Mehdi EL AYADI, Romain DIOP, Qilian GU
 ## Description
 
 ### Contexte
-Le composant HMACSHA512 est un module de cryptographie qui fournit une fonction de hachage cryptographique pour la sécurité des données. Il est basé sur l'algorithme HMAC (Hash-based Message Authentication Code) et utilise SHA512 comme fonction de hachage sous-jacente.
+Le composant HMACSHA512 est un module de cryptographie spécialisé dans l'authentification des messages. Il garantit non seulement l'intégrité des données, mais assure aussi leur authenticité grâce à l'utilisation d'une fonction de hachage cryptographique. Fondé sur l'algorithme HMAC (Hash-based Message Authentication Code), HMACSHA512 utilise le SHA512 comme fonction de hachage sous-jacente
 
 ### En détails : 
 
 HMACSHA512 est un algorithme de hachage utilisé pour l'authentification de messages. Il est basé sur l'algorithme cryptographique SHA-512. HMAC signifie "Hash-based Message Authentication Code". C'est une construction spécifique utilisée pour créer une fonction de hachage de message, qui peut être utilisée pour vérifier à la fois l'intégrité des données et l'authenticité.
 
 L'algorithme HMACSHA512 combine une **clé secrète** avec le message à hacher pour produire un code d'authentification de message (*MAC - Message authentication code*). Ce MAC peut ensuite être utilisé pour vérifier que le message n'a pas été altéré pendant le transport et que le message provient bien de l'expéditeur prévu.
+
+Une spécificité de cet algorithme réside dans son caractère secret, s'opposant ainsi aux méthodes d'authentification qui reposent sur le système de clés publique et privée. Dans ce cas, la clé HMACSHA512 doit être partagée de manière sécurisée entre l'expéditeur et le destinataire pour garantir un processus d'authentification efficace.
 
 Les cas d'utilisation typiques de HMACSHA512 comprennent :
 
